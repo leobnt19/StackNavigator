@@ -21,7 +21,7 @@ export default class First extends Component {
   render() {
     return (
       <View style={styles.regform}>
-           {/* <Image source={require('./images/Alien.png')} style={{ width: 100, height: 100, alignSelf: 'center', marginTop: 30, tintColor: 'white' }} /> */}
+           <Image source={require('../images/Alien.png')} style={{ width: 100, height: 100, alignSelf: 'center', marginTop: 30, tintColor: 'white' }} />
   
           <Text style={styles.header}> Sing Up </Text>
   
@@ -54,6 +54,39 @@ export default class First extends Component {
   
           </View>
     )
+  }
+
+checkData = () => {
+  
+// alert(this.state.username)
+
+fetch('http://10.0.2.2:3000', {
+    method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+      })  
+    })
+  
+    .then((response) => response.json())
+    .then((res) => {
+  
+      if(res.sucess === true){
+        var username = res.message;
+
+        AsyncStorage.setItem('username', username)
+
+        this.props.navigation.navigate('Login')
+        
+        } else {
+        alert(res.message)
+      }
+    })
+    .done()
   }
 }
 

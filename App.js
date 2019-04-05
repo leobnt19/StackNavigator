@@ -4,6 +4,7 @@ import { createStackNavigator, createAppContainer, StackNavigator } from 'react-
 
 import First from './screens/First';
 import After from './screens/After';
+import Memberarea from './screens/Memberarea';
 
 const RootStack = createStackNavigator(
   {
@@ -13,11 +14,13 @@ const RootStack = createStackNavigator(
     Other: {
       screen: After
     },
+    Login: {
+      screen: Memberarea
+    },
   },
   {
     initialRouteName: 'Home'
   }
-
 );
 
 class App extends React.Component {

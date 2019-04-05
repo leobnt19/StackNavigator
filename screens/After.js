@@ -52,7 +52,7 @@ export default class After extends Component {
       <View style={{flex: 1, paddingTop:20}}>
         <FlatList
           data={this.state.results}
-          renderItem={({item}) => <Text>{item.name}</Text>} //{item.name} {item.password}
+          renderItem={({item}) => <Text> Usuário: {item.name} - Senha: {item.password} </Text>} //{item.name} {item.password}
           keyExtractor={({id}, index) => id}
   
         />
